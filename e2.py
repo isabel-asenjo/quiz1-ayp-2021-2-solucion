@@ -15,7 +15,7 @@ Una compañía de transportes te ha contratado para que programes el modelo de s
 clients = []
 
 while True:
-    print("Bienvenido al sistema administrador de clientes de la compañía de transportes.\n1. Agregar cliente\n2. Eliminar cliente\n3. Consultar cliente\n4. Salir")
+    print("Bienvenido al sistema administrador de clientes de la compañía de transportes.\n1. Agregar cliente\n2. Eliminar cliente\n3. Consultar clientes\n4. Salir")
     action = input("Ingrese el número correspondiente a su elección: ")
     while not action.isnumeric() or int(action) not in range(1,5):
         action = input("Ingreso inválido, ingrese el número correspondiente a su elección: ")
@@ -53,24 +53,32 @@ while True:
             
             print(f"Por tener como tres últimos dígitos de su cédula un número incremental, tiene un descuento del 30% del precio del boleto. Su precio final es de {price}")
         
+        # se guardan los datos del nuevo cliente en la lista de clientes
         clients.append({'name': name, 'age': age, 'id': id, 'price': price, 'discount': discount})
 
+        # se muestra la información guardada
         print(f"Cliente registrado con éxito!\n\tNombre: {name}\n\tEdad: {age}\n\tCédula: {id}\n\tPrecio del boleto: ${price}\n\tDescuento recibido: {discount}")
 
     elif action == "2":
+        # se muestran los clientes numerados
         print("CLIENTES REGISTRADOS\n")
         for i,c in enumerate(clients):
             print(f"----{i+1}----")
             print(f"\tNombre: {c['name']}\n\tEdad: {c['age']}\n\tCédula: {c['id']}\n\tPrecio del boleto: ${c['price']}\n\tDescuento recibido: {c['discount']}")
+        
+        # se solicita el número que le corresponda
         eliminar = input("Ingrese el número correspondiente al cliente que desea eliminar o ingrese 0 si desea salir: ")
         while not eliminar.isnumeric() or int(eliminar) not in range(0,len(clients)+1):
             eliminar = input("Ingreso inválido, intente de nuevo: ")
+        
+        # se busca el cliente que coincida con el seleccionado
         for i in range(len(clients)):
             if i == int(eliminar)-1:
                 eliminado = clients.pop(i)
                 print(f"El cliente {eliminado['name']} fue eliminado con éxito.")
     
     elif action == "3":
+        # se muestran los clientes registrados
         print("CLIENTES REGISTRADOS\n")
         for i,c in enumerate(clients):
             print(f"----{i+1}----")
