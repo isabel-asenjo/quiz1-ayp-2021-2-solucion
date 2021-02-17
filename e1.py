@@ -17,7 +17,9 @@ valid = False
 # se solicita la constraseña
 p = input("Ingrese su nueva contraseña: ")
 
+# se valida longitud de la contraseña
 if len(p) >= 8:
+    # se valida que no contenga espacios
     if not " " in p:
         for c in p:
             # validar si el caracter es un número
